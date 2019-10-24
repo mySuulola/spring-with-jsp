@@ -5,13 +5,13 @@ import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
-@Table(name="todo")
+@Table(name="todos")
 public class Todo {
 
 
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private int id;
+    private Long id;
 
     private String user;
 
@@ -26,7 +26,6 @@ public class Todo {
     }
 
     public Todo(
-            int id,
             String user,
             String description,
             Date deadline,
@@ -37,11 +36,11 @@ public class Todo {
         this.isCompleted = isCompleted;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

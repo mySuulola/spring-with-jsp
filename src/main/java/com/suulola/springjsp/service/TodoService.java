@@ -13,9 +13,9 @@ public class TodoService {
     private static int todoCount = 3;
 
     static {
-        todos.add(new Todo(1,"Niyi", "Read", new Date(), false));
-        todos.add(new Todo(2, "Graham", "Eat", new Date(), false));
-        todos.add(new Todo(3, "Johnson", "Sleep", new Date(), false));
+        todos.add(new Todo("Niyi", "Read", new Date(), false));
+        todos.add(new Todo("Graham", "Eat", new Date(), false));
+        todos.add(new Todo("Johnson", "Sleep", new Date(), false));
     }
 
     public List<Todo> retreiveAllTodos() {
@@ -24,7 +24,7 @@ public class TodoService {
 
     public List<Todo> addTodo(String user, String description, Date date) {
         int currentSize = todos.size();
-        todos.add(new Todo(5, user, description, date, false ));
+        todos.add(new Todo( user, description, date, false ));
         return todos;
     }
 
