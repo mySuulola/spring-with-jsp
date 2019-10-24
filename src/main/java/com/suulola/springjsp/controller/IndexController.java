@@ -3,7 +3,6 @@ package com.suulola.springjsp.controller;
 import com.suulola.springjsp.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,24 +16,14 @@ public class IndexController extends LoginService {
     @Autowired
     LoginService loginService;
 
-    @RequestMapping("/")
-    public String homePage(Model model) {
-        model.addAttribute("name", "Wave");
-        return "index";
-    }
 
-    @RequestMapping("/contact")
-    public String contactPage(Model model) {
-        model.addAttribute("phone", "07061972413");
-        return "contact";
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String showLoginPage(ModelMap modelMap) {
+        modelMap.addAttribute("name", "Wave");
         return "login";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @RequestMapping(value = "/", method = RequestMethod.POST)
     public String logIn(ModelMap modelMap,
                         @RequestParam String username,
                         @RequestParam String password) {

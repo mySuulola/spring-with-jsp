@@ -33,9 +33,9 @@
             <tbody>
             <c:forEach items="${todos}" var="todo">
                 <tr>
-                    <th scope="row">1.</th>
+                    <th scope="row">${todo.id + 1}</th>
                     <td>${todo.description}</td>
-                    <td> <fmt:formatDate value="${todo.deadline}" pattern="dd/MM/yyy" /> </td>
+                    <td> <fmt:formatDate value="${todo.deadline}" pattern="dd/MM/YYYY" /> </td>
 <%--                    <td>${todos}</td>--%>
                     <td>
                         <button class="btn btn-danger">Delete
@@ -43,7 +43,7 @@
                     </td>
                 </tr>
             </c:forEach>
-<%--            <p>${todos}</p>--%>
+            <p>${todos}</p>
             </tbody>
         </table>
 
@@ -65,27 +65,30 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form:form action="/" method="post">
+                        <form action="/add-todo" method="post">
                             <div class="form-group">
-                                <form:label for="description" path="description">Description</form:label>
-                                <form:input  
+                                <label for="description">Description</label>
+                                <input
+                                        id="description"
                                         class="form-control"
                                         required="required"
                                         placeholder="Enter Todo Description" 
-                                        path="description"
+                                        name="description"
                                 />
-                                <form:errors path="description"/>
                                 <small class="form-text text-muted">Specify the tasks to be done.</small>
                             </div>
                             <div class="form-group">
-                                <form:label path="deadline" for="deadline">Date to be completed</form:label>
-                                <form:input type="date" class="form-control" id="deadline" placeholder="Deadline" path="deadline" />
-                                <form:errors path="deadline" />
-                                <fmt:formatDate value="" />
+                                <label for="deadline">Date to be completed</label>
+                                <input
+                                        type="date"
+                                        class="form-control"
+                                        id="deadline"
+                                        placeholder="Deadline"
+                                        name="deadline" />
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>
-                        </form:form>
+                        </form>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

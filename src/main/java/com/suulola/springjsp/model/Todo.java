@@ -7,9 +7,11 @@ import java.util.Date;
 @Entity
 @Table(name="todo")
 public class Todo {
+
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.TABLE)
+    private int id;
 
     private String user;
 
@@ -24,6 +26,7 @@ public class Todo {
     }
 
     public Todo(
+            int id,
             String user,
             String description,
             Date deadline,
@@ -34,11 +37,11 @@ public class Todo {
         this.isCompleted = isCompleted;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
