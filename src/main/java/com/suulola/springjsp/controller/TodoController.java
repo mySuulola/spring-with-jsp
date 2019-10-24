@@ -1,6 +1,7 @@
 package com.suulola.springjsp.controller;
 
-import com.suulola.springjsp.service.TodoService;
+import com.suulola.springjsp.repository.TodoRepository;
+import com.suulola.springjsp.service.TodoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,11 +19,16 @@ import java.util.Date;
 public class TodoController {
 
     @Autowired
-    TodoService todoService;
+    TodoServiceImpl todoService;
+
+    @Autowired
+    TodoRepository todoRepository;
+
+
 
     @RequestMapping(value = "/list-todos", method = RequestMethod.GET)
     public String getAllTodos(ModelMap modelMap) {
-        modelMap.put("todos", todoService.retreiveAllTodos());
+        modelMap.put("todos", todoRepository.findAll());
         return "list-todos";
     }
 
@@ -41,8 +47,10 @@ public class TodoController {
             formattedDate = new Date();
         }
 
+        todoService.addTodo("username", description, formattedDate, false);
+
         System.out.println(todoService.toString());
-        modelMap.put("todos", todoService.addTodo("username", description, formattedDate));
+        modelMap.put("todos", todoRepository.findAll());
         return "list-todos";
     }
 }

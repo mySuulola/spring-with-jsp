@@ -1,33 +1,27 @@
 package com.suulola.springjsp.service;
 
 import com.suulola.springjsp.model.Todo;
+import com.suulola.springjsp.repository.TodoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class TodoService {
-    private static List<Todo> todos = new ArrayList<Todo>();
-    private static int todoCount = 3;
+public interface TodoService {
 
-    static {
-        todos.add(new Todo("Niyi", "Read", new Date(), false));
-        todos.add(new Todo("Graham", "Eat", new Date(), false));
-        todos.add(new Todo("Johnson", "Sleep", new Date(), false));
-    }
+    List < Todo > getTodosByUser(String user);
 
-    public List<Todo> retreiveAllTodos() {
-        return todos;
-    }
+    Optional <Todo> getTodoById(long id);
 
-    public List<Todo> addTodo(String user, String description, Date date) {
-        int currentSize = todos.size();
-        todos.add(new Todo( user, description, date, false ));
-        return todos;
-    }
+    void updateTodo(Todo todo);
 
+    void addTodo(String user, String description, Date date, boolean isDone);
 
+    void deleteTodo(long id);
+
+    void saveTodo(Todo todo);
 
 }
