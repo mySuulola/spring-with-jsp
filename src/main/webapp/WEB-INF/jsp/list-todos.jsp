@@ -33,17 +33,15 @@
             <tbody>
             <c:forEach items="${todos}" var="todo">
                 <tr>
-                    <th scope="row">${todo.id + 1}</th>
+                    <th scope="row">${todo.id}</th>
                     <td>${todo.description}</td>
                     <td> <fmt:formatDate value="${todo.deadline}" pattern="dd/MM/YYYY" /> </td>
-<%--                    <td>${todos}</td>--%>
                     <td>
                         <button class="btn btn-danger">Delete
                         </button>
                     </td>
                 </tr>
             </c:forEach>
-            <p>${todos}</p>
             </tbody>
         </table>
 
