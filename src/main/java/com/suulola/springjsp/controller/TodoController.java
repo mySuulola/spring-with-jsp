@@ -32,7 +32,7 @@ public class TodoController {
         return "list-todos";
     }
 
-    @RequestMapping(value = "/add-todo", method = RequestMethod.POST)
+    @RequestMapping(value = "/list-todos", method = RequestMethod.POST)
     public String addTodo(
             ModelMap modelMap,
             @RequestParam String description,

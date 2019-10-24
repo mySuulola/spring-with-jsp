@@ -35,7 +35,7 @@
                 <tr>
                     <th scope="row">${todo.id}</th>
                     <td>${todo.description}</td>
-                    <td> <fmt:formatDate value="${todo.deadline}" pattern="dd/MM/YYYY" /> </td>
+                    <td> <fmt:formatDate value="${todo.deadline}"  /> </td>
                     <td>
                         <button class="btn btn-danger">Delete
                         </button>
@@ -44,6 +44,8 @@
             </c:forEach>
             </tbody>
         </table>
+
+        <p>${todos}</p>
 
 
 
@@ -63,7 +65,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form action="/add-todo" method="post">
+                        <form action="/list-todos" method="post">
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <input
@@ -81,7 +83,6 @@
                                         type="date"
                                         class="form-control"
                                         id="deadline"
-                                        placeholder="Deadline"
                                         name="deadline" />
                             </div>
 
