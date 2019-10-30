@@ -37,14 +37,15 @@
                     <td>${todo.description}</td>
                     <td> <fmt:formatDate value="${todo.deadline}"  /> </td>
                     <td>
-                        <button class="btn btn-danger">Delete
-                        </button>
+                        <a href="/delete/${todo.id}" class="btn btn-danger">Delete
+                        </a>
                     </td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
 
+        <p>Just a JSON sample</p>
         <p>${todos}</p>
 
 
@@ -91,7 +92,6 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Save changes</button>
                     </div>
                 </div>
             </div>
